@@ -14,7 +14,7 @@ object Utils {
         return Pair(firstName, lastName)
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
+  //  @RequiresApi(Build.VERSION_CODES.Q)
     fun transliteration(divider: String = ""): String{
         var latinString: String = ""
 //        val cirilicToLatin: String = "Cyrillic-Latin"
