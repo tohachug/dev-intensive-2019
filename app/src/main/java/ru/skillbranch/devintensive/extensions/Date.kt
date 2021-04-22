@@ -32,7 +32,7 @@ fun Date.humanizeDiff(date: Date = Date()): String{
     var timeCompare = date.time
     when((timeCompare-time) * SECOND){
         in 0..1 -> humanDate = "только что"
-        else -> humanDate = ""
+        else -> humanDate = "сравнение с будущим периодом"
     }
     return humanDate
 }
