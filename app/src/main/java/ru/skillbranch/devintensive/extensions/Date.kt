@@ -31,9 +31,9 @@ fun Date.humanizeDiff(date: Date = Date()): String{
     var time = this.time
     var timeCompare = date.time
     when((timeCompare-time) * SECOND){
-        0..1 -> humanDate = "только что"
+        in 0..1 -> humanDate = "только что"
+        else -> humanDate = ""
     }
-
     return humanDate
 }
 
