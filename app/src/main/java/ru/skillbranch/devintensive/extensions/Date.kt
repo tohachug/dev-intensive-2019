@@ -46,6 +46,40 @@ fun Date.humanizeDiff(date: Date = Date()): String{
     return humanDate
 }
 
+fun TimeUnits.plural(value: Int): String{
+    var result: String
+    var ostDivided = value % 100 / 10
+    if(ostDivided==1) {
+        when(this){
+            TimeUnits.SECOND -> result = "$value секунд"
+            TimeUnits.MINUTE -> result = "$value минут"
+            TimeUnits.HOUR -> result = "$value часов"
+            TimeUnits.DAY -> result = "$value дней"
+        }
+    }else
+        when(value % 10) {
+            1 -> when (this) {
+                TimeUnits.SECOND -> result = "$value секунда"
+                TimeUnits.MINUTE -> result = "$value минута"
+                TimeUnits.HOUR -> result = "$value час"
+                TimeUnits.DAY -> result = "$value день"
+            }
+            2, 3, 4 -> when (this) {
+                TimeUnits.SECOND -> result = "$value секунды"
+                TimeUnits.MINUTE -> result = "$value минуты"
+                TimeUnits.HOUR -> result = "$value часа"
+                TimeUnits.DAY -> result = "$value дня"
+            }
+            else -> when (this) {
+                TimeUnits.SECOND -> result = "$value секунд"
+                TimeUnits.MINUTE -> result = "$value минут"
+                TimeUnits.HOUR -> result = "$value часов"
+                TimeUnits.DAY -> result = "$value дней"
+            }
+        }
+    return result
+}
+
 enum class TimeUnits{
     SECOND,
     MINUTE,
