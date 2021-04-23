@@ -7,3 +7,13 @@ fun String.truncate(value: Int = 16): String{
         this
     }
 }
+
+fun String.stripHtml(): String{
+    var result = this.replaceRange(this.indexOf("<"), this.indexOf(">"), "")
+            .replace("&","")
+            .replace("'","")
+            .replace("""""","")
+    while(result.contains("  "))
+        result.replace("  "," ")
+    return result
+}
