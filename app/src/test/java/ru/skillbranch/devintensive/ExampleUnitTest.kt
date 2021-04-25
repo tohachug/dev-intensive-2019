@@ -3,7 +3,11 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 
 import org.junit.Assert.*
+import ru.skillbranch.devintensive.extensions.*
+import ru.skillbranch.devintensive.models.BaseMessage
+import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
 /**
@@ -22,12 +26,55 @@ class ExampleUnitTest {
         val user = User("1")
         val user2 = User("2", "John", "Week")
         val user3 = User("3", "John", "Silver", null, lastVisit = Date(), isOnline = true)
+        val user4 = User.makeUser("Toha chug")
 
-        user.printMe()
-        user2.printMe()
-        user3.printMe()
+        //  user.printMe()
+        //  user2.printMe()
+        //  user3.printMe()
+        //  user4.printMe()
 
-        println("$user $user2 $user3")
+        //Println("$user $user2 $user3")
+
+        //        Date.humanizeDiff ошибка
+//        println(Date().add(-2, TimeUnits.HOUR).humanizeDiff()) //null null
+//        println(Date().add(-5, TimeUnits.DAY).humanizeDiff()) //null null
+//        println(Date().add(2, TimeUnits.MINUTE).humanizeDiff()) //null null
+//        println(Date().add(7, TimeUnits.DAY).humanizeDiff()) //null null
+//        println(Date().add(-400, TimeUnits.DAY).humanizeDiff()) //null null
+//        println(Date().add(400, TimeUnits.DAY).humanizeDiff()) //null null
+    }
+
+    @Test
+    fun Date_humanizeDiff(){
+        println(Date().add(-2, TimeUnits.HOUR).humanizeDiff()) //null null
+        println(Date().add(-5, TimeUnits.DAY).humanizeDiff()) //null null
+        println(Date().add(2, TimeUnits.MINUTE).humanizeDiff()) //null null
+        println(Date().add(7, TimeUnits.DAY).humanizeDiff()) //null null
+        println(Date().add(-400, TimeUnits.DAY).humanizeDiff()) //null null
+        println(Date().add(400, TimeUnits.DAY).humanizeDiff()) //null null
+    }
+    
+        @Test
+        fun String_plural(){
+            println(TimeUnits.SECOND.plural(1)) //null null
+            println(TimeUnits.MINUTE.plural(4)) //null null
+            println(TimeUnits.HOUR.plural(19)) //null null
+            println(TimeUnits.DAY.plural(222)) //null null
+            println(Date().add(-400, TimeUnits.DAY).humanizeDiff()) //null null
+            println(Date().add(400, TimeUnits.DAY).humanizeDiff()) //null null
+        }
+
+    @Test
+    fun String_truncate(){
+        println("Bender Bending Rodriguez — дословно «Сгибальщик Сгибающий Родригес»".truncate()) //null null
+        println("Bender Bending Rodriguez — дословно «Сгибальщик Сгибающий Родригес»".truncate(15) ) //null null
+        println("A     ".truncate(3)) //null null
+    }
+
+    @Test
+    fun stripHtml(){
+        println("<p class=title>Образовательное IT-сообщество Skill Branch</p>".stripHtml()) //null null
+        println("<p>Образовательное       IT-сообщество Skill Branch</p>".stripHtml()) //null null
     }
 
 }
