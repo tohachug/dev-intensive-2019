@@ -28,10 +28,21 @@ class ExampleUnitTest {
         val user3 = User("3", "John", "Silver", null, lastVisit = Date(), isOnline = true)
         val user4 = User.makeUser("Toha chug")
 
+        val user5 = User.Builder()
+                .id("1")
+                .firstName("toha")
+                .lastName("chug")
+                .avatar(null)
+                .rating(1)
+                .respect()
+                .lastVisit(Date())
+                .isOnline(true)
+                .build()
         //  user.printMe()
         //  user2.printMe()
         //  user3.printMe()
         //  user4.printMe()
+        user5.printMe()
 
         //Println("$user $user2 $user3")
 
@@ -45,7 +56,16 @@ class ExampleUnitTest {
     }
 
     @Test
+    fun String_toInitials(){
+        println(Utils.toInitials("john" ,"doe")) //null null
+        println(Utils.toInitials("John", null) ) //null null
+        println(Utils.toInitials(null, null)) //null null
+        println(Utils.toInitials(" ", "")) //null null
+    }
+
+    @Test
     fun Date_humanizeDiff(){
+      //  println(Date().add(-2, TimeUnits.SECOND).humanizeDiff()) //null null
         println(Date().add(-2, TimeUnits.HOUR).humanizeDiff()) //null null
         println(Date().add(-5, TimeUnits.DAY).humanizeDiff()) //null null
         println(Date().add(2, TimeUnits.MINUTE).humanizeDiff()) //null null
@@ -56,12 +76,11 @@ class ExampleUnitTest {
     
         @Test
         fun String_plural(){
-            println(TimeUnits.SECOND.plural(1)) //null null
+            println(TimeUnits.SECOND.plural(2)) //null null
             println(TimeUnits.MINUTE.plural(4)) //null null
             println(TimeUnits.HOUR.plural(19)) //null null
             println(TimeUnits.DAY.plural(222)) //null null
-            println(Date().add(-400, TimeUnits.DAY).humanizeDiff()) //null null
-            println(Date().add(400, TimeUnits.DAY).humanizeDiff()) //null null
+
         }
 
     @Test

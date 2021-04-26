@@ -56,6 +56,7 @@ data class User(
         fun respect(respect: Int = 0) = apply { this.respect = respect }
         fun lastVisit(lastVisit: Date? = Date()) = apply { this.lastVisit = lastVisit }
         fun isOnline(isOnline: Boolean = false) = apply { this.isOnline = isOnline }
+
         fun build() = User(id, firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
     }
 
@@ -68,6 +69,11 @@ data class User(
 
             return User(id = "$lastId", firstName = firstName, lastName = lastName)
         }
+
+        fun Builder(): User.Builder {
+            return User.Builder()
+        }
     }
+
 }
 

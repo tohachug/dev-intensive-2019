@@ -2,6 +2,7 @@ package ru.skillbranch.devintensive.utils
 
 import android.icu.text.Transliterator
 import android.os.Build
+import android.service.autofill.Validators.not
 import androidx.annotation.RequiresApi
 
 object Utils {
@@ -93,4 +94,15 @@ object Utils {
         }
         return latinString
     }
+
+  fun toInitials(firstName: String?, lastName: String?): String?{
+    var result: String? = null
+    if (firstName?.isNullOrBlank() == false){
+        result = firstName?.get(0).toString().toUpperCase()
+    }
+    if(lastName?.isNullOrBlank() == false){
+      result = result + lastName?.get(0).toString().toUpperCase()
+    }
+    return result
+  }
 }
